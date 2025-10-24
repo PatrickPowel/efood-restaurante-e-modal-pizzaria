@@ -1,4 +1,3 @@
-//createBrowserRouter serve para criar as rotas
 import { BrowserRouter } from 'react-router-dom'
 import { GlobalCss } from './styles'
 
@@ -9,9 +8,8 @@ function App() {
   return (
     <BrowserRouter>
       <GlobalCss />
-      <div className="container"></div>
-      <Rotas />
-      <Footer />
+      <Rotas /> {/* As rotas controlam o conteúdo exibido */}
+      <Footer /> {/* O footer aparece em todas as páginas */}
     </BrowserRouter>
   )
 }

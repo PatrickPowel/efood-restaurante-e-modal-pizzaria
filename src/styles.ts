@@ -6,7 +6,7 @@ export const cores = {
   corDePeleFundo: '#FFEBD9',
   corDePeleFundoEscuro: '#ffebc1',
   corDeFundoHome: '#FFF8F2',
-  preto: '#FFFFFF'
+  branco: '#FFFFFF'
 }
 
 export const GlobalCss = createGlobalStyle`
