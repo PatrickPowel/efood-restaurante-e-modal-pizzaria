@@ -1,87 +1,79 @@
-import { useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 import Header from '../../components/Header'
 import BannerRestaurant from '../../components/BannerRestaurant'
 import ProductsListRestaurant from '../../components/ProductsListRestaurant'
+import ModalProduct from '../../components/ModalProduct'
 import Food from '../../Models/Food'
 
-// componente principal da página do restaurante
+// 👇 Adicione logo aqui
+type RestaurantData = {
+  id: number
+  titulo: string
+  capa: string
+  cardapio: Food[]
+}
+
 const Restaurant = () => {
   const { id } = useParams()
-  const [foods, setFoods] = useState<Food[]>([])
+  const [restaurant, setRestaurant] = useState<RestaurantData | null>(null)
+  const [selectedProduct, setSelectedProduct] = useState<Food | null>(null)
+  const [cart, setCart] = useState<Food[]>([])
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    setFoods([
-      {
-        id: 1,
-        title: 'Pizza Marguerita',
-        description:
-          'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-        image: '/images/pizza.png', // ✅ caminho corrigido
-        infos: ['Italiana', '4 pessoas'],
-        system: 'Tradicional',
-        nota: 4.9
-      },
-      {
-        id: 2,
-        title: 'Pizza Marguerita',
-        description:
-          'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-        image: '/images/pizza.png',
-        infos: ['Italiana', '3 pessoas'],
-        system: 'Especial',
-        nota: 4.8
-      },
-      {
-        id: 3,
-        title: 'Pizza Marguerita',
-        description:
-          'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-        image: '/images/pizza.png',
-        infos: ['Italiana', '4 pessoas'],
-        system: 'Tradicional',
-        nota: 4.7
-      },
-      {
-        id: 4,
-        title: 'Pizza Marguerita',
-        description:
-          'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-        image: '/images/pizza.png',
-        infos: ['Italiana', '4 pessoas'],
-        system: 'Especial',
-        nota: 4.6
-      },
-      {
-        id: 5,
-        title: 'Pizza Marguerita',
-        description:
-          'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-        image: '/images/pizza.png',
-        infos: ['Italiana', '4 pessoas'],
-        system: 'Tradicional',
-        nota: 4.8
-      },
-      {
-        id: 6,
-        title: 'Pizza Marguerita',
-        description:
-          'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-        image: '/images/pizza.png',
-        infos: ['Italiana', '3 pessoas'],
-        system: 'Tradicional',
-        nota: 4.7
-      }
-    ])
+    fetch(`https://api-ebac.vercel.app/api/efood/restaurantes/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        const foods: Food[] = data.cardapio.map((item: any) => ({
+          id: item.id,
+          title: item.nome, // 👈 traduzido da API
+          description: item.descricao,
+          image: item.foto,
+          infos: [data.tipo, item.porcao],
+          system: 'Tradicional',
+          nota: data.avaliacao
+        }))
+
+        setRestaurant({
+          id: data.id,
+          titulo: data.titulo,
+          capa: data.capa,
+          cardapio: foods
+        })
+
+        setLoading(false)
+      })
   }, [id])
+
+  const handleAddToCart = (product: Food) => {
+    const updatedCart = [...cart, product]
+    setCart(updatedCart)
+    localStorage.setItem('cart', JSON.stringify(updatedCart))
+  }
+
+  if (loading) return <p>Carregando...</p>
+  if (!restaurant) return <p>Restaurante não encontrado.</p>
 
   return (
     <>
       <Header />
-      <BannerRestaurant image="/images/apresentacao.png" />
+      <BannerRestaurant image={restaurant.capa} />
       <div className="container">
-        <ProductsListRestaurant title="" background="salmon" food={foods} />
+        <ProductsListRestaurant
+          title=""
+          background="salmon"
+          food={restaurant.cardapio}
+          onSelectProduct={setSelectedProduct}
+        />
       </div>
+
+      <ModalProduct
+        isOpen={!!selectedProduct}
+        onClose={() => setSelectedProduct(null)}
+        product={selectedProduct}
+        onAddToCart={handleAddToCart}
+      />
     </>
   )
 }

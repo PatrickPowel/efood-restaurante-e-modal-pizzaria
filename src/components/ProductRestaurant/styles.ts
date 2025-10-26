@@ -1,66 +1,82 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
 
-export const Card = styled.li`
-  background-color: ${cores.corSalmao};
-  border: 1px solid ${cores.corSalmao};
+export const Card = styled.div`
+  background-color: #e66767;
+  color: #fff;
   border-radius: 8px;
-  overflow: hidden;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
   position: relative;
-  color: ${cores.corSalmao};
-  padding-bottom: 16px;
-  transition: transform 0.2s ease;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-  cursor: pointer;
-
-  &:hover {
-    transform: translateY(-4px);
-  }
 
   img {
     width: 100%;
-    height: 200px;
+    height: 180px;
     object-fit: cover;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
   }
 `
 
 export const Infos = styled.div`
   position: absolute;
-  top: 16px;
-  right: 16px;
+  top: 12px;
+  right: 12px;
   display: flex;
-  gap: 8px;
+  gap: 4px;
 `
 
 export const Nota = styled.div`
   position: absolute;
-  bottom: 8px;
-  right: 16px;
+  top: 10px;
+  left: 10px;
   display: flex;
   align-items: center;
-  gap: 4px;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 2px 6px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #fff;
+  z-index: 2;
 
   span {
-    font-size: 14px;
-    font-weight: bold;
+    margin-right: 4px;
   }
 
   img {
-    width: 18px;
+    width: 14px;
+    height: 14px;
   }
 `
 
 export const Titulo = styled.h3`
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
-  margin: 16px;
-  color: ${cores.branca};
+  margin-top: 12px;
+  margin-bottom: 8px;
 `
 
 export const Descricao = styled.p`
   font-size: 14px;
-  margin: 0 16px 16px;
-  line-height: 20px;
-  color: ${cores.branca};
+  line-height: 1.4;
+  flex: 1;
+`
+
+// 👇 botão do container igual ao do modal
+export const ButtonContainer = styled.button`
+  background-color: #ffeadd;
+  color: #e66767;
+  border: none;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 12px;
+  width: 100%;
+  border-radius: 0 0 8px 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #ffc5b5;
+  }
 `
