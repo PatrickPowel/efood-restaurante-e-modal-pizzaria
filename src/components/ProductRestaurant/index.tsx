@@ -2,57 +2,58 @@ import { useDispatch } from 'react-redux'
 import { addToCart } from '../../store/reducers/carts'
 import Food from '../../Models/Food'
 import estrela from '../../assets/images/estrela.png'
-import {
-  Card,
-  Titulo,
-  Descricao,
-  Infos,
-  Nota,
-  ButtonContainer
-} from './styles'
+import { Card, Titulo, Descricao, Infos, Nota, ButtonContainer } from './styles'
 
 type Props = {
+  id: number
   title: string
-  system: string
   description: string
-  infos: string[]
   image: string
+  infos: string[]
+  system: string
   nota: number
   preco: number
-  id: number
+  onSelect: (product: Food) => void // função que abre o modal
 }
 
 const ProductRestaurant = ({
+  id,
   title,
-  system,
   description,
-  infos,
   image,
+  infos,
+  system,
   nota,
   preco,
-  id
+  onSelect
 }: Props) => {
-  const dispatch = useDispatch()
-
-  const handleAdd = () => {
-    const product = new Food(id, title, description, image, infos, system, nota, preco)
-    dispatch(addToCart(product))
+  const product: Food = {
+    id,
+    title,
+    description,
+    image,
+    infos,
+    system,
+    nota,
+    preco
   }
 
   return (
     <Card>
       <img src={image} alt={title} />
-      <Infos>
-        {infos && infos.map((info) => <span key={info}>{info}</span>)}
-      </Infos>
-      <Nota>
-        <span>{nota.toFixed(1)}</span>
-        <img src={estrela} alt="estrela" />
-      </Nota>
       <Titulo>{title}</Titulo>
       <Descricao>{description}</Descricao>
+      <Infos>
+        {infos.map((info, index) => (
+          <span key={index}>{info}</span>
+        ))}
+      </Infos>
+      <Nota>
+        {nota.toFixed(1)} <span>⭐</span>
+      </Nota>
 
-      <ButtonContainer type="button" onClick={handleAdd}>
+      {/* ✅ Ao clicar, apenas abre o modal */}
+      <ButtonContainer onClick={() => onSelect(product)}>
         Adicionar — R$ {preco.toFixed(2).replace('.', ',')}
       </ButtonContainer>
     </Card>

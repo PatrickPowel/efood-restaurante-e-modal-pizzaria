@@ -15,7 +15,8 @@ const promocoes: Food[] = [
     system: 'Saiba Mais!',
     infos: ['Destaque da semana', 'Japonesa'],
     image: suschi,
-    nota: 4.9
+    nota: 4.9,
+    preco: 65.0 // <-- adicione isso em todos
   },
 
   {
@@ -26,7 +27,8 @@ const promocoes: Food[] = [
     system: 'Saiba Mais!',
     infos: ['Italiana'],
     image: macarrao,
-    nota: 4.6
+    nota: 4.6,
+    preco: 65.0 // <-- adicione isso em todos
   },
 
   {
@@ -37,7 +39,8 @@ const promocoes: Food[] = [
     system: 'Saiba Mais!',
     infos: ['Italiana'],
     image: macarrao,
-    nota: 4.6
+    nota: 4.6,
+    preco: 65.0 // <-- adicione isso em todos
   },
 
   {
@@ -48,7 +51,8 @@ const promocoes: Food[] = [
     system: 'Saiba Mais!',
     infos: ['Italiana'],
     image: macarrao,
-    nota: 4.9
+    nota: 4.9,
+    preco: 65.0 // <-- adicione isso em todos
   },
   {
     id: 5,
@@ -58,7 +62,8 @@ const promocoes: Food[] = [
     system: 'Saiba Mais!',
     infos: ['Italiana'],
     image: macarrao,
-    nota: 4.9
+    nota: 4.9,
+    preco: 65.0 // <-- adicione isso em todos
   },
   {
     id: 6,
@@ -68,7 +73,8 @@ const promocoes: Food[] = [
     system: 'Saiba Mais!',
     infos: ['Italiana'],
     image: macarrao,
-    nota: 4.9
+    nota: 4.9,
+    preco: 65.0 // <-- adicione isso em todos
   }
 ]
 

@@ -1,13 +1,12 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
 
 export const ModalOverlay = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.8); /* Fundo escuro igual Figma */
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -15,14 +14,14 @@ export const ModalOverlay = styled.div`
 `
 
 export const ModalContent = styled.div`
-  background: ${cores.corSalmao};
-  color: ${cores.branco};
+  background: #ffeadd;
   border-radius: 8px;
-  padding: 24px;
-  max-width: 640px;
+  padding: 20px;
   width: 90%;
+  max-width: 600px;
   display: flex;
   flex-direction: column;
+  color: #e66767;
   position: relative;
 
   img {
@@ -33,59 +32,47 @@ export const ModalContent = styled.div`
     margin-bottom: 16px;
   }
 
-  .info {
-    display: flex;
-    flex-direction: column;
+  .close {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #e66767;
+    cursor: pointer;
   }
 
   h2 {
-    font-size: 22px;
-    font-weight: bold;
-    margin-bottom: 12px;
+    font-size: 24px;
+    margin-bottom: 8px;
   }
 
-  .description {
+  p {
     font-size: 14px;
-    margin-bottom: 12px;
     line-height: 1.4;
   }
 
   .serving {
-    font-size: 14px;
-    font-weight: 500;
-    margin-bottom: 20px;
+    margin-top: 8px;
+    font-style: italic;
   }
+`
 
-  .add {
-    background: ${cores.corDeFundoHome};
-    color: ${cores.corSalmao};
-    font-weight: bold;
-    border: none;
-    padding: 12px 0;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 15px;
-    text-transform: uppercase;
-    transition: 0.3s;
+export const Button = styled.button`
+  background-color: #e66767;
+  color: #fff;
+  border: none;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 12px;
+  width: 100%;
+  border-radius: 8px;
+  margin-top: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
 
-    &:hover {
-      opacity: 0.9;
-    }
-
-    span {
-      color: ${cores.corSalmao};
-      font-weight: bold;
-    }
-  }
-
-  .close {
-    position: absolute;
-    right: 12px;
-    top: 8px;
-    background: none;
-    border: none;
-    font-size: 28px;
-    color: ${cores.branco};
-    cursor: pointer;
+  &:hover {
+    background-color: #d15858;
   }
 `

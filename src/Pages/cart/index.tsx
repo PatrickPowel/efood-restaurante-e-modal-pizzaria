@@ -37,7 +37,9 @@ const Cart = () => {
               <p>{item.description}</p>
               <strong>R$ {item.preco?.toFixed(2).replace('.', ',')}</strong>
             </div>
-            <button onClick={() => dispatch(removeFromCart(item.id))}>Remover</button>
+            <button onClick={() => dispatch(removeFromCart(item.id))}>
+              Remover
+            </button>
           </CartItem>
         ))}
 

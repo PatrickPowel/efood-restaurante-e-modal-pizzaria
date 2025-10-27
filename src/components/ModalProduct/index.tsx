@@ -1,38 +1,41 @@
-import { ModalOverlay, ModalContent } from './styles'
+import { useDispatch } from 'react-redux'
+import { addToCart } from '../../store/reducers/carts'
+import { Button, ModalContent, ModalOverlay } from './styles'
 import Food from '../../Models/Food'
 
 type Props = {
   isOpen: boolean
-  onClose: () => void
   product: Food | null
-  onAddToCart: (product: Food) => void
+  onClose: () => void
 }
 
-const ModalProduct = ({ isOpen, onClose, product, onAddToCart }: Props) => {
+const ModalProduct = ({ isOpen, product, onClose }: Props) => {
+  const dispatch = useDispatch()
+
   if (!isOpen || !product) return null
 
   return (
     <ModalOverlay>
       <ModalContent>
-        <button className="close" onClick={onClose}>
-          ×
-        </button>
-
         <img src={product.image} alt={product.title} />
-        <div className="info">
+        <div>
           <h2>{product.title}</h2>
-          <p className="description">{product.description}</p>
+          <p>{product.description}</p>
           <p className="serving">Serve: {product.infos.join(', ')}</p>
-          <button
-            className="add"
+
+          <Button
             onClick={() => {
-              onAddToCart(product)
+              dispatch(addToCart(product))
               onClose()
             }}
           >
-            Adicionar ao carrinho — <span>R$ {product.nota.toFixed(2)}</span>
-          </button>
+            Adicionar ao carrinho — R${' '}
+            {product.preco.toFixed(2).replace('.', ',')}
+          </Button>
         </div>
+        <button onClick={onClose} className="close">
+          X
+        </button>
       </ModalContent>
     </ModalOverlay>
   )

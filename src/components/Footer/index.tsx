@@ -8,15 +8,15 @@ const Footer = () => {
     <Container>
       <Logo src={logo} alt="efood" />
       <SocialLinks>
-      <span>
-        <FaInstagram size={20} />
-      </span>
-      <span>
-        <FaFacebookF size={20} />
-      </span>
-      <span>
-        <FaTwitter size={20} />
-      </span>
+        <span>
+          <FaInstagram size={20} />
+        </span>
+        <span>
+          <FaFacebookF size={20} />
+        </span>
+        <span>
+          <FaTwitter size={20} />
+        </span>
       </SocialLinks>
 
       <FooterText>

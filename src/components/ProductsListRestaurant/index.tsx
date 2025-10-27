@@ -23,13 +23,14 @@ const ProductsListRestaurant = ({
           food.map((item) => (
             <ProductRestaurant
               key={item.id}
-              id={item.id} // 👈 adiciona essa linha
+              id={item.id}
               title={item.title}
               description={item.description}
               image={item.image}
-              infos={item.infos || []}
+              infos={item.infos}
               system={item.system}
               nota={item.nota}
+              preco={item.preco ?? 0} // ✅ valor padrão
               onSelect={onSelectProduct}
             />
           ))}

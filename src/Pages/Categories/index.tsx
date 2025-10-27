@@ -14,7 +14,8 @@ const promocoes: Food[] = [
     system: 'Saiba Mais!',
     infos: ['Destaque da semana', 'Japonesa'],
     image: suschi,
-    nota: 4.9
+    nota: 4.9,
+    preco: 65.0 // ✅ adiciona um valor numérico aqui
   },
 
   {
@@ -25,7 +26,8 @@ const promocoes: Food[] = [
     system: 'Saiba Mais!',
     infos: ['15%', 'R$ 65,00'],
     image: macarrao,
-    nota: 0
+    nota: 0,
+    preco: 80.0 // ✅ adiciona também aqui
   },
 
   {
@@ -36,7 +38,8 @@ const promocoes: Food[] = [
     system: 'Saiba Mais!',
     infos: ['15%', 'R$ 65,00'],
     image: suschi,
-    nota: 0
+    nota: 0,
+    preco: 55.0 // ✅
   },
 
   {
@@ -47,7 +50,8 @@ const promocoes: Food[] = [
     system: 'Saiba Mais!',
     infos: ['15%', 'R$ 65,00'],
     image: pizza,
-    nota: 0
+    nota: 0,
+    preco: 45.0 // ✅
   }
 ]
 
@@ -60,7 +64,8 @@ const emBreve: Food[] = [
     system: 'Saiba mais!',
     infos: ['19/08'],
     image: macarrao,
-    nota: 0
+    nota: 0,
+    preco: 65.0 // ✅
   },
 
   {
@@ -71,7 +76,8 @@ const emBreve: Food[] = [
     system: 'Saiba mais!',
     infos: ['19/08'],
     image: pizza,
-    nota: 0
+    nota: 0,
+    preco: 50.0 // ✅
   },
 
   {
@@ -82,7 +88,8 @@ const emBreve: Food[] = [
     system: 'Saiba mais!',
     infos: ['19/08'],
     image: macarrao,
-    nota: 0
+    nota: 0,
+    preco: 65.0 // ✅
   },
 
   {
@@ -93,7 +100,8 @@ const emBreve: Food[] = [
     system: 'Saiba mais!',
     infos: ['19/08'],
     image: pizza,
-    nota: 4.9
+    nota: 4.9,
+    preco: 50.0 // ✅
   }
 ]
 

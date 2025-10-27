@@ -17,12 +17,25 @@ export const Card = styled.div`
   }
 `
 
+// ✅ Restaurado o estilo das tags (ex.: "italiana 1 a 2 pessoas")
 export const Infos = styled.div`
   position: absolute;
   top: 12px;
   right: 12px;
   display: flex;
-  gap: 4px;
+  gap: 8px;
+  flex-wrap: wrap;
+  z-index: 2;
+
+  span {
+    background-color: #e66767;
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 4px;
+    text-transform: lowercase;
+  }
 `
 
 export const Nota = styled.div`
@@ -63,7 +76,7 @@ export const Descricao = styled.p`
   flex: 1;
 `
 
-// 👇 botão do container igual ao do modal
+// ✅ Botão com visual igual ao modal
 export const ButtonContainer = styled.button`
   background-color: #ffeadd;
   color: #e66767;
