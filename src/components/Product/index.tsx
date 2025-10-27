@@ -13,7 +13,15 @@ type Props = {
   nota: number
 }
 
-const Product = ({ id, title, system, description, infos, image, nota }: Props) => (
+const Product = ({
+  id,
+  title,
+  system,
+  description,
+  infos,
+  image,
+  nota
+}: Props) => (
   <Card>
     <img src={image.startsWith('http') ? image : image} alt={title} />
 
