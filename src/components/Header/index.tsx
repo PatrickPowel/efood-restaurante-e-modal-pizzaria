@@ -1,24 +1,14 @@
-import { useState, useEffect } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { RootState } from '../../store'
 
 import { HeaderBar, Links, LinkItem, LinkCart } from './styles'
 import Logo from '../../assets/images/logo.png'
 import Carrinho from '../../assets/images/carrinho.png'
 
 const Header = () => {
-  const [cartCount, setCartCount] = useState(0)
-  const location = useLocation()
-
-  // 🔹 Atualiza contador sempre que a rota muda
-  useEffect(() => {
-    const savedCart = localStorage.getItem('cart')
-    if (savedCart) {
-      const items = JSON.parse(savedCart)
-      setCartCount(items.length)
-    } else {
-      setCartCount(0)
-    }
-  }, [location]) // recarrega ao mudar de página
+  // 🔹 Lendo a quantidade de itens diretamente do Redux
+  const cartCount = useSelector((state: RootState) => state.cart.items.length)
 
   return (
     <HeaderBar>
@@ -34,6 +24,7 @@ const Header = () => {
         <img src={Logo} alt="logo efood" />
       </Link>
 
+      {/* 🔹 Contador do carrinho dinâmico */}
       <LinkCart as={Link} to="/cart">
         {cartCount} - Produto{cartCount !== 1 ? 's' : ''}
         <img src={Carrinho} alt="carrinho de compras" />

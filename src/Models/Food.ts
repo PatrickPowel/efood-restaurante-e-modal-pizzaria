@@ -1,11 +1,12 @@
 class Food {
-  title: string
   id: number
-  nota: number
+  title: string
   description: string
   image: string
   infos: string[]
   system: string
+  nota: number
+  preco: number // ✅ NOVO CAMPO
 
   constructor(
     id: number,
@@ -14,7 +15,8 @@ class Food {
     image: string,
     infos: string[],
     system: string,
-    nota: number // 👈 adicione aqui
+    nota: number,
+    preco: number // ✅ NOVO PARÂMETRO
   ) {
     this.id = id
     this.title = title
@@ -22,8 +24,10 @@ class Food {
     this.image = image
     this.infos = infos
     this.system = system
-    this.nota = nota // 👈 inicializa aqui
+    this.nota = nota
+    this.preco = preco // ✅ INICIALIZAÇÃO
   }
 }
 
 export default Food
+

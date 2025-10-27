@@ -8,18 +8,17 @@ const Footer = () => {
     <Container>
       <Logo src={logo} alt="efood" />
       <SocialLinks>
-        <SocialLinks>
-          <span>
-            <FaInstagram />
-          </span>
-          <span>
-            <FaFacebookF />
-          </span>
-          <span>
-            <FaTwitter />
-          </span>
-        </SocialLinks>
+      <span>
+        <FaInstagram size={20} />
+      </span>
+      <span>
+        <FaFacebookF size={20} />
+      </span>
+      <span>
+        <FaTwitter size={20} />
+      </span>
       </SocialLinks>
+
       <FooterText>
         A efood é uma plataforma para divulgação de estabelecimentos, a
         responsabilidade pela entrega, qualidade dos produtos é toda do
